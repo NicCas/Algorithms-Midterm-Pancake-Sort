@@ -2,11 +2,11 @@ import java.util.Arrays;
 
 public class PancakeSort
 {
-    private int[] panArrayCake;
+    private int[] pancakeArray;
 
     public PancakeSort(int[] userArray)
     {
-        panArrayCake = userArray;
+        pancakeArray = userArray;
     }
 
     /* Flips array [0] with array [argument] */
@@ -16,9 +16,9 @@ public class PancakeSort
         int start = 0;
         while (start < indexToFlip)
         {
-            temp = panArrayCake[start];
-            panArrayCake[start] = panArrayCake[indexToFlip];
-            panArrayCake[indexToFlip] = temp;
+            temp = pancakeArray[start];
+            pancakeArray[start] = pancakeArray[indexToFlip];
+            pancakeArray[indexToFlip] = temp;
 
             start++;
             indexToFlip--;
@@ -28,25 +28,27 @@ public class PancakeSort
     /* Pancake sort called by user, returns a sorted array */
     public int[] pancakeSort()
     {
-        for (int topIndex = panArrayCake.length -1; topIndex > 0 ; topIndex--)
+        // Last index is the pivot, pivot changes to the next lowest index. For loop will run n times
+        for (int topIndex = pancakeArray.length -1; topIndex > 0 ; topIndex--)
         {
-            //System.out.print(".");
+            // Find the maximum value's index within the unsorted section of the array
             int maxIndex = 0;
             for (int i = 0; i <= topIndex; ++i)
             {
-                if (panArrayCake[i] > panArrayCake[maxIndex])
+                if (pancakeArray[i] > pancakeArray[maxIndex])
                     maxIndex = i;
             }
-
+            
+            // If maxIndex equals topIndex then the max value in the unsorted section of the array is already in the 
+            // correct spot and no flipping is required
             if (maxIndex != topIndex)
             {
+                // Put that max value at index 0
                 flip(maxIndex);
+                // Put that max value into its sorted position
                 flip(topIndex);
             }
-
-            //System.out.println(Arrays.toString(panArrayCake));
         }
-        //System.out.println();
-        return panArrayCake;
+        return pancakeArray;
     }
 }
