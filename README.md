@@ -1,2 +1,2 @@
-# Algoriths-Midterm-Pancake-Sort
+# Algorithms-Midterm-Pancake-Sort
 Pancake Sort for Fall 2020 Analysis of Algorithms Midterm 
